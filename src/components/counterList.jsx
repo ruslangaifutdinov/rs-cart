@@ -15,10 +15,36 @@ const CounterList = () => {
     setCounters(newCounters);
   };
 
+  const handleIncrement = (id) => {
+    const newCounters = counters.map((counter) => {
+      if (counter.id === id) {
+        counter.value += 1;
+      }
+      return counter;
+    });
+    setCounters(newCounters);
+  };
+
+  const handleDecrement = (id) => {
+    const newCounters = counters.map((counter) => {
+      if (counter.id === id) {
+        counter.value -= 1;
+      }
+      return counter;
+    });
+    setCounters(newCounters);
+  };
+
   return (
     <>
       {counters.map((counter) => (
-        <Counter key={counter.id} onDelete={handleDelete} {...counter} />
+        <Counter
+          key={counter.id}
+          {...counter}
+          onDelete={handleDelete}
+          onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
+        />
       ))}
     </>
   );

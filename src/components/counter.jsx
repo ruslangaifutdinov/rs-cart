@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Counter = (props) => {
-  const [value, setValue] = useState(props.value);
+  const { value } = props;
 
   const formatValue = () => {
     return value === 0 ? "empty" : value;
@@ -14,11 +14,11 @@ const Counter = (props) => {
   };
 
   const handleIncrement = () => {
-    setValue(value + 1);
+    props.onIncrement(props.id);
   };
 
   const handleDecrement = () => {
-    setValue(value - 1);
+    props.onDecrement(props.id);
   };
 
   return (
